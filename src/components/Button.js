@@ -28,7 +28,7 @@ class Button extends React.Component {
                 return 'disabled'
             } if (this.props.valueVisual === this.props.maxValue && this.props.name ==='inc') {
                 return 'disabled'
-            } if (this.props.name === 'set' && this.props.valueVisual !== "enter values and press 'set'" ) {
+            } if ((this.props.name === 'set' && this.props.valueVisual !== "enter values and press 'set'")|| (this.props.startValue === '' || this.props.maxValue === '')  ) {
                 return 'disabled'
             }
         }

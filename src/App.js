@@ -27,20 +27,29 @@ class App extends React.Component {
     componentDidUpdate(prevProps, prevState, snapshot) {
         let maxValue = +this.state.maxValue
         let startValue = +this.state.startValue
-        debugger
-        if ((startValue >= maxValue) && (prevState.startValue !== this.state.startValue )) {
-            this.setState({valueVisual: "Incorrect value"
-            }, () => {
-                this.saveState();
-            });
-        } else  if ((startValue< maxValue) && (prevState.startValue !== this.state.startValue )){
-            this.setState({valueVisual:'enter values and press \'set\''
-            }, () => {
-                this.saveState();
-            });
-        }
-    }
 
+        if ((startValue >= maxValue) && (prevState.startValue !== this.state.startValue)) {
+            this.setState({
+                valueVisual: "Incorrect value"
+            }, () => {
+                this.saveState();
+            });
+        } else if ((startValue < 0) && (prevState.startValue !== this.state.startValue)) {
+            this.setState({
+                valueVisual: "Incorrect value"
+            }, () => {
+                this.saveState();
+            });
+        } else if ((startValue < maxValue) && (prevState.startValue !== this.state.startValue)) {
+            this.setState({
+                valueVisual: this.state.valueVisual
+            }, () => {
+                this.saveState();
+            });
+
+        }
+
+    }
 
 
     saveState = () => {
@@ -83,15 +92,9 @@ class App extends React.Component {
     }
 
     setStart = () => {
-        if (Number(this.state.startValue) > 0 && Number(this.state.startValue) < Number(this.state.maxValue)) {
+        if (Number(this.state.startValue) >= 0 && Number(this.state.startValue) < Number(this.state.maxValue)) {
             this.setState({
                 valueVisual: this.state.startValue
-            }, () => {
-                this.saveState();
-            })
-        } else {
-            this.setState({
-                valueVisual: "Incorrect value"
             }, () => {
                 this.saveState();
             })
@@ -100,12 +103,12 @@ class App extends React.Component {
 
     setStartValue = (e) => {
 
-            let newStartValue = e.currentTarget.value;
-            this.setState({
-                startValue: newStartValue
-            }, () => {
-                this.saveState();
-            })
+        let newStartValue = e.currentTarget.value;
+        this.setState({
+            startValue: newStartValue
+        }, () => {
+            this.saveState();
+        })
 
     }
 
@@ -120,7 +123,6 @@ class App extends React.Component {
     }
 
 
-
     onFocusActive = () => {
 
         if (Number(this.state.startValue > 0) || Number(this.state.startValue) < Number(this.state.maxValue)) {
@@ -129,19 +131,15 @@ class App extends React.Component {
             }, () => {
                 this.saveState();
             })
-         }
+        }
     }
-
-
-
-
 
 
     render = () => {
 
 
         let inputClass = (e) => {
-            if (Number(this.state.startValue) > 0 && Number(this.state.startValue) < Number(this.state.maxValue) || this.state.startValue === '' || this.state.maxValue === '') {
+            if (Number(this.state.startValue) >= 0 && Number(this.state.startValue) < Number(this.state.maxValue) || this.state.startValue === '' || this.state.maxValue === '') {
                 return this.state.inputClassGood;
             } else {
                 return this.state.inputClassBad;
