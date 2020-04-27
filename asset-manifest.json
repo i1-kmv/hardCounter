@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/hardCounter/static/css/main.69312d8c.chunk.css",
-    "main.js": "/hardCounter/static/js/main.123bb3dc.chunk.js",
-    "main.js.map": "/hardCounter/static/js/main.123bb3dc.chunk.js.map",
+    "main.css": "/hardCounter/static/css/main.4c5c1819.chunk.css",
+    "main.js": "/hardCounter/static/js/main.317e36e0.chunk.js",
+    "main.js.map": "/hardCounter/static/js/main.317e36e0.chunk.js.map",
     "runtime-main.js": "/hardCounter/static/js/runtime-main.8e774ef3.js",
     "runtime-main.js.map": "/hardCounter/static/js/runtime-main.8e774ef3.js.map",
     "static/js/2.033fe4e8.chunk.js": "/hardCounter/static/js/2.033fe4e8.chunk.js",
     "static/js/2.033fe4e8.chunk.js.map": "/hardCounter/static/js/2.033fe4e8.chunk.js.map",
     "index.html": "/hardCounter/index.html",
-    "precache-manifest.1df9568e085bb474dbf89a9b58ca1c98.js": "/hardCounter/precache-manifest.1df9568e085bb474dbf89a9b58ca1c98.js",
+    "precache-manifest.7047d27914894858685e46f31a3e53b9.js": "/hardCounter/precache-manifest.7047d27914894858685e46f31a3e53b9.js",
     "service-worker.js": "/hardCounter/service-worker.js",
-    "static/css/main.69312d8c.chunk.css.map": "/hardCounter/static/css/main.69312d8c.chunk.css.map",
+    "static/css/main.4c5c1819.chunk.css.map": "/hardCounter/static/css/main.4c5c1819.chunk.css.map",
     "static/js/2.033fe4e8.chunk.js.LICENSE.txt": "/hardCounter/static/js/2.033fe4e8.chunk.js.LICENSE.txt",
     "static/media/logo.svg": "/hardCounter/static/media/logo.5d5d9eef.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.8e774ef3.js",
     "static/js/2.033fe4e8.chunk.js",
-    "static/css/main.69312d8c.chunk.css",
-    "static/js/main.123bb3dc.chunk.js"
+    "static/css/main.4c5c1819.chunk.css",
+    "static/js/main.317e36e0.chunk.js"
   ]
 }
