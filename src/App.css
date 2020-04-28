@@ -15,6 +15,7 @@
   border-radius: 10px;
   text-align: center;
   font-size: 16px;
+  outline: none;
 
 }
 
@@ -26,5 +27,6 @@
   text-align: center;
   background-color: rgba(252, 23, 23, 0.4);
   font-size: 16px;
+  outline: none;
 }
 

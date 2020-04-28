@@ -22,51 +22,56 @@ class App extends React.Component {
 
     componentDidMount = () => {
         this.restoreState()
-    }
+    };
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        let maxValue = +this.state.maxValue
-        let startValue = +this.state.startValue
 
-        if ((startValue >= maxValue) && (prevState.startValue !== this.state.startValue)) {
-            this.setState({
-                valueVisual: "Incorrect value"
-            }, () => {
-                this.saveState();
-            });
-        } else if ((startValue < 0) && (prevState.startValue !== this.state.startValue)) {
-            this.setState({
-                valueVisual: "Incorrect value"
-            }, () => {
-                this.saveState();
-            });
-        } else if ((startValue < maxValue) && (prevState.startValue !== this.state.startValue)) {
-            this.setState({
-                valueVisual: this.state.valueVisual
-            }, () => {
-                this.saveState();
-            });
+
+        let maxValue = Number(this.state.maxValue);
+        let startValue = Number(this.state.startValue);
+
+
+        if ((this.state.valueVisual === "enter values and press 'set'") || (this.state.valueVisual === "Incorrect value")) {
+            if ((this.state.maxValue !== '') && (startValue >= maxValue) && ((prevState.startValue !== this.state.startValue) || (prevState.maxValue !== this.state.maxValue))) {
+                this.setState({
+                    valueVisual: "Incorrect value"
+                }, () => {
+                    this.saveState();
+                });
+            } else if ((startValue < 0) && ((prevState.startValue !== this.state.startValue) || (prevState.maxValue !== this.state.maxValue))) {
+                this.setState({
+                    valueVisual: "Incorrect value"
+                }, () => {
+                    this.saveState();
+                });
+            } else if ((startValue < maxValue) && ((prevState.startValue !== this.state.startValue) || (prevState.maxValue !== this.state.maxValue))) {
+                this.setState({
+                    valueVisual: "enter values and press 'set'"
+                }, () => {
+                    this.saveState();
+                });
+            }
 
         }
 
-    }
+    };
 
 
     saveState = () => {
 
-        let stateAsString = JSON.stringify(this.state)
+        let stateAsString = JSON.stringify(this.state);
         localStorage.setItem("state", stateAsString);
-    }
+    };
 
     restoreState = () => {
 
-        let stateAsString = localStorage.getItem("state")
+        let stateAsString = localStorage.getItem("state");
 
-        let state = JSON.parse(stateAsString)
+        let state = JSON.parse(stateAsString);
 
         this.setState(state);
 
-    }
+    };
 
 
     counterReset = () => {
@@ -81,25 +86,27 @@ class App extends React.Component {
 
     counterInc = () => {
         let newValue = ++this.state.valueVisual;
-        if (this.state.valueVisual >= this.state.startValue && this.state.valueVisual <= this.state.maxValue) {
+        if (Number(this.state.valueVisual) >= Number(this.state.startValue) && Number(this.state.valueVisual) <= Number(this.state.maxValue)) {
             this.setState({
                 valueVisual: newValue
+            }, () => {
+                this.saveState();
             });
         } else {
             return false;
         }
 
-    }
+    };
 
     setStart = () => {
-        if (Number(this.state.startValue) >= 0 && Number(this.state.startValue) < Number(this.state.maxValue)) {
+        if ((Number(this.state.startValue) >= 0 && Number(this.state.startValue) < Number(this.state.maxValue)) && (this.state.valueVisual === "enter values and press 'set'")) {
             this.setState({
                 valueVisual: this.state.startValue
             }, () => {
                 this.saveState();
             })
         }
-    }
+    };
 
     setStartValue = (e) => {
 
@@ -110,7 +117,7 @@ class App extends React.Component {
             this.saveState();
         })
 
-    }
+    };
 
 
     setMaxValue = (e) => {
@@ -120,31 +127,37 @@ class App extends React.Component {
         }, () => {
             this.saveState();
         })
-    }
+    };
 
 
     onFocusActive = () => {
 
-        if (Number(this.state.startValue > 0) || Number(this.state.startValue) < Number(this.state.maxValue)) {
+        if ((Number(this.state.startValue) >= 0) && (Number(this.state.startValue) < Number(this.state.maxValue)) || this.state.startValue === '' || this.state.maxValue === '') {
             this.setState({
                 valueVisual: "enter values and press 'set'"
             }, () => {
                 this.saveState();
             })
+        } else {
+            this.setState({
+                valueVisual: "Incorrect value"
+            }, () => {
+                this.saveState();
+            })
         }
-    }
+    };
 
 
     render = () => {
 
 
-        let inputClass = (e) => {
-            if (Number(this.state.startValue) >= 0 && Number(this.state.startValue) < Number(this.state.maxValue) || this.state.startValue === '' || this.state.maxValue === '') {
+        let inputClass = () => {
+            if ((Number(this.state.startValue) >= 0) && (Number(this.state.startValue) < Number(this.state.maxValue)) || this.state.startValue === '' || this.state.maxValue === '') {
                 return this.state.inputClassGood;
             } else {
                 return this.state.inputClassBad;
             }
-        }
+        };
 
         return (
             <div className="App">

@@ -14,7 +14,7 @@ class Visual extends React.Component {
             } else {
                 return 'visualNumber'
             }
-        }
+        };
 
 
         return (
@@ -23,6 +23,6 @@ class Visual extends React.Component {
             </div>
         );
     }
-}
+};
 
 export default Visual;
