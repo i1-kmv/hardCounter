@@ -38,13 +38,13 @@ class App extends React.Component {
                 }, () => {
                     this.saveState();
                 });
-            } else if ((startValue < 0) && ((prevState.startValue !== this.state.startValue) || (prevState.maxValue !== this.state.maxValue))) {
+            } else if (((startValue < 0) && (this.state.maxValue!=='')) && ((prevState.startValue !== this.state.startValue) || (prevState.maxValue !== this.state.maxValue))) {
                 this.setState({
                     valueVisual: "Incorrect value"
                 }, () => {
                     this.saveState();
                 });
-            } else if ((startValue < maxValue) && ((prevState.startValue !== this.state.startValue) || (prevState.maxValue !== this.state.maxValue))) {
+            } else if ((startValue < maxValue ) && ((prevState.startValue !== this.state.startValue) || (prevState.maxValue !== this.state.maxValue))) {
                 this.setState({
                     valueVisual: "enter values and press 'set'"
                 }, () => {
@@ -99,7 +99,7 @@ class App extends React.Component {
     };
 
     setStart = () => {
-        if ((Number(this.state.startValue) >= 0 && Number(this.state.startValue) < Number(this.state.maxValue)) && (this.state.valueVisual === "enter values and press 'set'")) {
+        if ((Number(this.state.startValue) >= 0 && (Number(this.state.startValue) < Number(this.state.maxValue))) && (this.state.valueVisual === "enter values and press 'set'") ) {
             this.setState({
                 valueVisual: this.state.startValue
             }, () => {
@@ -152,7 +152,7 @@ class App extends React.Component {
 
 
         let inputClass = () => {
-            if ((Number(this.state.startValue) >= 0) && (Number(this.state.startValue) < Number(this.state.maxValue)) || this.state.startValue === '' || this.state.maxValue === '') {
+            if ((Number(this.state.startValue) >= 0) && (Number(this.state.startValue) < Number(this.state.maxValue)) || ((this.state.startValue === '')  || (this.state.maxValue === '' && (Number(this.state.startValue)>=0)))) {
                 return this.state.inputClassGood;
             } else {
                 return this.state.inputClassBad;
