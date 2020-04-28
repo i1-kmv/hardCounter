@@ -80,7 +80,9 @@ class App extends React.Component {
 
         this.setState({
             valueVisual: newValue
-        })
+        }, () => {
+            this.saveState();
+        });
     };
 
 
